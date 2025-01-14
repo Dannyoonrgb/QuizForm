@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퀴즈 정답 제출</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+    #wrongMessage {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>정답을 맞혀보세요!</h1>
+  <p>정답을 입력하고 제출 버튼을 누르세요.</p>
+  
+  <input type="text" id="answerInput" placeholder="정답을 입력하세요" />
+  <button id="submitBtn">제출</button>
+
+  <div id="message">
+    <p>안녕하세요, 퀴즈폼 전달드립니다.</p>
+    <p>웨비나를 모두 들은 사람들이 푸는 퀴즈인 점을 감안하고 평가되는 일종의 테스트입니다. 작업 권한도 퀴즈 결과에 따라 정해질 거구요. 잘 생각하고 푸시길 바랍니다.</p>
+    <p><a href="https://docs.google.com/forms/d/1VzWbJoipxKN8qD7THXFm_3r-f3wgmnhwc7vtnIegvK0/viewform?edit_requested=true" target="_blank">퀴즈 폼 열기</a></p>
+  </div>
+  <div id="wrongMessage">오답입니다. 다시 시도해보세요. 😞</div>
+
+  <script>
+    const correctAnswer = "물티슈"; // 정답
+    const submitBtn = document.getElementById("submitBtn");
+    const answerInput = document.getElementById("answerInput");
+    const message = document.getElementById("message");
+    const wrongMessage = document.getElementById("wrongMessage");
+
+    submitBtn.addEventListener("click", () => {
+      const userAnswer = answerInput.value.trim(); // 입력값 가져오기
+      if (userAnswer === correctAnswer) {
+        message.style.display = "block"; // 정답 메시지 표시
+        wrongMessage.style.display = "none";
+      } else {
+        wrongMessage.style.display = "block"; // 오답 메시지 표시
+        message.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
